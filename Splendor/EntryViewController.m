@@ -14,9 +14,9 @@
 
 @implementation EntryViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil AndImage:(UIImage *)image AndDateString:(NSString *)dateString AndLocationString:(NSString *)locationString
+- (id) initWithImage:(UIImage *)image AndDateString:(NSString *)dateString AndLocationString:(NSString *)locationString
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
         // get full width and height of screen
         CGFloat fullWidth = [UIScreen mainScreen].bounds.size.width;

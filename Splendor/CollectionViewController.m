@@ -82,8 +82,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // configure the cell
-    // newest entries first
+    // configure the cell to display newest entries first
     SunsetEntry *rowEntry = [self.entries objectAtIndex:([self.entries count] - indexPath.row - 1)];
     NSString *location = rowEntry.location;
     NSString *date = rowEntry.date;
@@ -145,7 +144,7 @@
     SunsetEntry *selected = [self.entries objectAtIndex:([self.entries count] - indexPath.row - 1)];
     
     // create a view for the entry, set the image
-    EntryViewController *entryView = [[EntryViewController alloc] initWithNibName:nil bundle:nil AndImage:selected.image AndDateString:selected.date AndLocationString:selected.location];
+    EntryViewController *entryView = [[EntryViewController alloc] initWithImage:selected.image AndDateString:selected.date AndLocationString:selected.location];
     
     // add target to the entry view's back button
     [entryView.backButton addTarget:self action:@selector(backPressed) forControlEvents:UIControlEventTouchUpInside];

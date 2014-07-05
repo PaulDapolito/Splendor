@@ -3,7 +3,7 @@
 //  SunsetWatch
 //
 //  Created by Paul on 1/9/14.
-//  Copyright (c) 2014 Harvey Mudd College. All rights reserved.
+//  Copyright (c) 2014 Paul Dapolito. All rights reserved.
 //
 
 #import "SunsetEntry.h"

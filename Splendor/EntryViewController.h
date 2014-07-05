@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) UIButton *backButton;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil AndImage:(UIImage *)image AndDateString:(NSString *)dateString AndLocationString:(NSString *)locationString;
+- (id) initWithImage:(UIImage *)image AndDateString:(NSString *)dateString AndLocationString:(NSString *)locationString;
 
 - (void) viewDidLoad;
 

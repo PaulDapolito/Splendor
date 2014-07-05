@@ -66,7 +66,7 @@
     // give the share view controller access to the tab bar controller
     _shareView.tabBarController = _tabBarController;
     
-    // setup UILabel alignment for entire app
+    // setup UILabel text alignment for entire app
     [[UILabel appearance] setTextAlignment:NSTextAlignmentCenter];
     
     // add the tab bar controller as the root view for the app
