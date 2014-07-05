@@ -167,15 +167,15 @@
 		73D1B5E619689875006E4789 /* Splendor */ = {
 			isa = PBXGroup;
 			children = (
-				73D1B62D19689921006E4789 /* Images */,
 				73D1B60F1968988F006E4789 /* AppDelegate.h */,
 				73D1B6101968988F006E4789 /* AppDelegate.m */,
-				73D1B64419689963006E4789 /* Globals */,
-				73D1B624196898D6006E4789 /* Database */,
-				73D1B5F219689875006E4789 /* Images.xcassets */,
-				73D1B620196898B7006E4789 /* Sunset/Sunrise Calculation Class */,
-				73D1B5E719689875006E4789 /* Supporting Files */,
 				73D1B61219689899006E4789 /* View Controllers */,
+				73D1B624196898D6006E4789 /* Database */,
+				73D1B620196898B7006E4789 /* Sunset/Sunrise Calculation Class */,
+				73D1B64419689963006E4789 /* Globals */,
+				73D1B62D19689921006E4789 /* Images */,
+				73D1B5F219689875006E4789 /* Images.xcassets */,
+				73D1B5E719689875006E4789 /* Supporting Files */,
 			);
 			path = Splendor;
 			sourceTree = "<group>";
@@ -577,6 +577,7 @@
 				73D1B60B19689875006E4789 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73D1B60C19689875006E4789 /* Build configuration list for PBXNativeTarget "SplendorTests" */ = {
 			isa = XCConfigurationList;
@@ -585,6 +586,7 @@
 				73D1B60E19689875006E4789 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
