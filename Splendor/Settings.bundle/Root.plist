@@ -28,7 +28,7 @@
 			<key>Key</key>
 			<string>intervalBefore</string>
 			<key>DefaultValue</key>
-			<string>15</string>
+			<string>10</string>
 			<key>Titles</key>
 			<array>
 				<string>15 minutes</string>

@@ -72,7 +72,7 @@
     // initialize default settings
     NSUserDefaults *defaultSettings = [NSUserDefaults standardUserDefaults];
     NSDictionary *defaultDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"NO", @"sunsetNotifications",
-                                                                                   @"15", @"notificationsInterval", nil];
+                                                                                   @"10", @"intervalBefore", nil];
     [defaultSettings registerDefaults:defaultDictionary];
     [defaultSettings synchronize];
     

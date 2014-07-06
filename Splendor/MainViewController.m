@@ -88,6 +88,18 @@
         [_sunlightLabel setAdjustsFontSizeToFitWidth:YES];
         [self.view addSubview:_sunlightLabel];
         
+        // initialize sunset notification variables
+        _sunsetNotification = [UILocalNotification new];
+        NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+        _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
+        _notificationsInterval = [[userSettings objectForKey:@"intervalBefore"] intValue];
+        
+        // observe changes in the user's notification settings
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(notificationSettingsChange)
+                                              name:NSUserDefaultsDidChangeNotification
+                                              object:nil];
+        
         // start looking for location changes
         [self startSignificantChangeUpdates];
     }
@@ -255,6 +267,20 @@
 {
     // perform updateSunlightMap in a background thread
     [self performSelectorInBackground:@selector(updateSunlightMap) withObject:nil];
+}
+
+- (void) notificationSettingsChange
+{
+    NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+    _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
+    _notificationsInterval = [[userSettings objectForKey:@"intervalBefore"] intValue];
+    
+    if (_sunsetNotificationsEnabled) {
+        NSLog(@"Notifications enabled %d minutes before sunset", _notificationsInterval);
+    }
+    else {
+        NSLog(@"Notifications disabled");
+    }
 }
 
 - (void) viewDidLoad

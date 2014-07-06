@@ -33,6 +33,10 @@
 
 @property (strong, nonatomic) UILabel *sunlightLabel;
 
+@property (strong, nonatomic) UILocalNotification *sunsetNotification;
+@property bool sunsetNotificationsEnabled;
+@property int notificationsInterval;
+
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) ShareViewController *shareView;
@@ -51,6 +55,8 @@
 
 - (void) updateSunlightMap;
 - (void) updateSunlightMapInBackground;
+
+- (void) notificationSettingsChange;
 
 - (void) viewDidLoad;
 
