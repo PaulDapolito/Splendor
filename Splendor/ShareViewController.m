@@ -64,6 +64,15 @@
     [formatter setDateFormat:@"MM/dd/YYYY"];
     NSString *date = [formatter stringFromDate:[NSDate date]];
     
+    // remove excess zeroes from date string
+    if([[date substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]){
+        date = [date substringWithRange:NSMakeRange(1, date.length -1)];
+    }
+    NSRange indexOfslash = [date rangeOfString:@"/"];
+    if([[date substringWithRange:NSMakeRange(indexOfslash.location+1, 1)] isEqualToString:@"0"]) {
+        date = [date stringByReplacingCharactersInRange:NSMakeRange(indexOfslash.location+1, 1) withString:@""];
+    }
+    
     // save the entry in the database
     [Database saveEntryWithDate:date andLocation:location andImage:_image];
     _collectionView.entries = [Database fetchAllEntries];
@@ -85,7 +94,7 @@
     [_shareButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
     
-    _shareButton.showsTouchWhenHighlighted = YES;
+    [_shareButton setShowsTouchWhenHighlighted:YES];
     [_shareButton addTarget:self action:@selector(sharePressed) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_shareButton];
@@ -96,13 +105,13 @@
     // setup the retake button
     _retakeButton = [[UIButton alloc] initWithFrame:CGRectMake(width/2, _tabBarController.tabBar.frame.origin.y - tabBarHeight, width/2, tabBarHeight)];
     
-    _retakeButton.backgroundColor = LIGHT_ORANGE;
+    [_retakeButton setBackgroundColor:LIGHT_ORANGE];
     [_retakeButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:25.0]];
     
     [_retakeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_retakeButton setTitle:@"Retake" forState:UIControlStateNormal];
     
-    _retakeButton.showsTouchWhenHighlighted = YES;
+    [_retakeButton setShowsTouchWhenHighlighted:YES];
     [_retakeButton addTarget:self action:@selector(retakePressed) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_retakeButton];
@@ -119,7 +128,7 @@
 {
     // clear out image and image viewer, present camera again
     _image = nil;
-    _imageView.image = nil;
+    [_imageView setImage:nil];
     [self presentViewController:_camera animated:YES completion:^{}];
 }
 
@@ -153,7 +162,7 @@
     else if (buttonIndex == 2) {
         MFMailComposeViewController *emailController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
         
-        emailController.mailComposeDelegate = self;
+        [emailController setMailComposeDelegate:self];
         NSData *imgData = UIImageJPEGRepresentation(_image, .7);
         
         [emailController addAttachmentData:imgData mimeType:nil fileName:@"image.jpeg"];
@@ -169,11 +178,11 @@
     else if (buttonIndex == 3) {
         MFMessageComposeViewController *messageController = [MFMessageComposeViewController new];
         
-        messageController.messageComposeDelegate = self;
+        [messageController setMessageComposeDelegate:self];
         
         NSData *imgData = UIImageJPEGRepresentation(_image, .7);
         BOOL didAttachImage = [messageController addAttachmentData:imgData typeIdentifier:@"public.data" filename:@"image.jpeg"];
-        messageController.body = [NSString stringWithFormat:@"Hey, check out this sunset photo I just took in %@, %@!", _city, _state];
+        [messageController setBody:[NSString stringWithFormat:@"Hey, check out this sunset photo I just took in %@, %@!", _city, _state]];
         
         if (didAttachImage) {
             [self presentViewController:messageController animated:YES completion:nil];
@@ -198,14 +207,13 @@
 -(void) messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    _tabBarController.selectedViewController = _mainView;
-    
+    [_tabBarController setSelectedViewController:_mainView];    
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    _tabBarController.selectedViewController = _mainView;
+    [_tabBarController setSelectedViewController:_mainView];
 }
 
 - (void) viewDidLoad
