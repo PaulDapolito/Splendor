@@ -96,7 +96,7 @@
         
         // observe changes in the user's notification settings
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                              selector:@selector(notificationSettingsChange)
+                                              selector:@selector(updateNotifications)
                                               name:NSUserDefaultsDidChangeNotification
                                               object:nil];
         
@@ -198,6 +198,7 @@
             _shareView.state = _state;
             
             [self updateLabels];
+            [self updateNotifications];
         }
     }];
     
@@ -269,17 +270,20 @@
     [self performSelectorInBackground:@selector(updateSunlightMap) withObject:nil];
 }
 
-- (void) notificationSettingsChange
+- (void) updateNotifications
 {
     NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
     _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
     _notificationsInterval = [[userSettings objectForKey:@"intervalBefore"] intValue];
     
     if (_sunsetNotificationsEnabled) {
-        NSLog(@"Notifications enabled %d minutes before sunset", _notificationsInterval);
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [_sunsetNotification setFireDate:[NSDate dateWithTimeInterval:(_notificationsInterval * -60) sinceDate:_sunset.date]];
+        [_sunsetNotification setAlertBody:[NSString stringWithFormat:@"%@, %@ sunset in %d minutes!", _city, _state, _notificationsInterval]];
+        [[UIApplication sharedApplication] scheduleLocalNotification:_sunsetNotification];
     }
     else {
-        NSLog(@"Notifications disabled");
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
 }
 

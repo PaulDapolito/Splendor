@@ -56,7 +56,7 @@
 - (void) updateSunlightMap;
 - (void) updateSunlightMapInBackground;
 
-- (void) notificationSettingsChange;
+- (void) updateNotifications;
 
 - (void) viewDidLoad;
 
