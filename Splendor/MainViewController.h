@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) UILabel *countdownLabel;
 @property (strong, nonatomic) NSTimer *updateCountdown;
+@property bool sunsetPassed;
 
 @property (strong, nonatomic) UILabel *cityAndStateLabel;
 @property (strong, nonatomic) NSString *city;

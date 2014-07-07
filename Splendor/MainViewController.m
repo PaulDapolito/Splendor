@@ -89,6 +89,7 @@
         [self.view addSubview:_sunlightLabel];
         
         // initialize sunset notification variables
+        _sunsetPassed = YES;
         _sunsetNotification = [UILocalNotification new];
         NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
         _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
@@ -121,20 +122,19 @@
     int minute = [currentMinutes intValue];
     
     // determine whether or not the sunset has passed
-    bool sunsetPassed;
-    if (_sunset.hour - hour > 0 || (_sunset.hour - hour == 0 && _sunset.minute - minute > 0)) {
-        sunsetPassed = NO;
+    if (_sunset.hour - hour > 0 || (_sunset.hour - hour == 0 && _sunset.minute - minute >= 0)) {
+        _sunsetPassed = NO;
     }
     else {
-        sunsetPassed = YES;
+        _sunsetPassed = YES;
     }
     
     // determine the correct preposition to use
-    NSString *preposition = (sunsetPassed) ? @"after" : @"until";
+    NSString *preposition = (_sunsetPassed) ? @"after" : @"until";
     
     // calculate the hours and minutes differences
-    int hoursDiff = (sunsetPassed) ? (hour - (int)_sunset.hour) : ((int)_sunset.hour - hour);
-    int minutesDiff = (sunsetPassed) ? (minute - (int)_sunset.minute) : ((int)_sunset.minute - minute);
+    int hoursDiff = (_sunsetPassed) ? (hour - (int)_sunset.hour) : ((int)_sunset.hour - hour);
+    int minutesDiff = (_sunsetPassed) ? (minute - (int)_sunset.minute) : ((int)_sunset.minute - minute);
         
     // add 60 minutes to minutesDiff if it's negative
     if (minutesDiff < 0) {
@@ -276,10 +276,33 @@
     _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
     _notificationsInterval = [[userSettings objectForKey:@"intervalBefore"] intValue];
     
-    if (_sunsetNotificationsEnabled) {
+    if (_sunsetNotificationsEnabled && !_sunsetPassed) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        [_sunsetNotification setFireDate:[NSDate dateWithTimeInterval:(_notificationsInterval * -60) sinceDate:_sunset.date]];
-        [_sunsetNotification setAlertBody:[NSString stringWithFormat:@"%@, %@ sunset in %d minutes!", _city, _state, _notificationsInterval]];
+        
+        // create new fire date using today's date
+        NSDateComponents *today = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                    fromDate:[NSDate date]];
+        NSDateComponents *fireDate = [NSDateComponents new];
+        [fireDate setYear:today.year];
+        [fireDate setMonth:today.month];
+        [fireDate setDay:today.day];
+        [fireDate setHour:_sunset.hour];
+        [fireDate setMinute:_sunset.minute - _notificationsInterval];
+        [_sunsetNotification setFireDate:[[NSCalendar currentCalendar] dateFromComponents:fireDate]];
+        
+        // create the notification body and schedule the notification
+        NSString *intervalString;
+        if (_notificationsInterval == 0) {
+            intervalString = @"now";
+        }
+        else if (_notificationsInterval == 1) {
+            intervalString = [NSString stringWithFormat:@"in %d minute", _notificationsInterval];
+        }
+        else {
+            intervalString = [NSString stringWithFormat:@"in %d minutes", _notificationsInterval];
+        }
+        
+        [_sunsetNotification setAlertBody:[NSString stringWithFormat:@"%@, %@ sunset %@!", _city, _state, intervalString]];
         [[UIApplication sharedApplication] scheduleLocalNotification:_sunsetNotification];
     }
     else {
