@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) UILabel *countdownLabel;
 @property (strong, nonatomic) NSTimer *updateCountdown;
+@property bool sunsetPassed;
 
 @property (strong, nonatomic) UILabel *cityAndStateLabel;
 @property (strong, nonatomic) NSString *city;
@@ -32,6 +33,10 @@
 @property (strong, nonatomic) NSDateComponents *sunset;
 
 @property (strong, nonatomic) UILabel *sunlightLabel;
+
+@property (strong, nonatomic) UILocalNotification *sunsetNotification;
+@property bool sunsetNotificationsEnabled;
+@property int notificationsInterval;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
@@ -51,6 +56,8 @@
 
 - (void) updateSunlightMap;
 - (void) updateSunlightMapInBackground;
+
+- (void) updateNotifications;
 
 - (void) viewDidLoad;
 

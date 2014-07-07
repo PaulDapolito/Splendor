@@ -27,7 +27,7 @@
         // configure sunlight world map image
         _worldMap = [[UIImageView alloc] initWithFrame:CGRectMake(0, yOffset, width, height/2 - height/8)];
         [_worldMap setContentMode:UIViewContentModeScaleToFill];
-        _worldMap.clipsToBounds = YES;
+        [_worldMap setClipsToBounds:YES];
         
         // set the world sunlight map image viewer to the shadowless map while fetching data from the server
         _worldMapImage = [UIImage imageNamed:@"blankMap.png"];
@@ -44,8 +44,8 @@
         // setup countdown label
         _countdownLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, yOffset, width, height/8 + height/48)];
         [_countdownLabel setFont:[UIFont fontWithName:@"Avenir" size:30.0]];
-        _countdownLabel.backgroundColor = LIGHT_ORANGE;
-        _countdownLabel.adjustsFontSizeToFitWidth = YES;
+        [_countdownLabel setBackgroundColor:LIGHT_ORANGE];
+        [_countdownLabel setAdjustsFontSizeToFitWidth:YES];
         [self.view addSubview:_countdownLabel];
         
         // setup timer to update countdown label each second
@@ -57,8 +57,8 @@
         // setup city and state label
         _cityAndStateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, yOffset, width, height/6)];
         [_cityAndStateLabel setFont:[UIFont fontWithName:@"Avenir" size:30.0]];
-        _cityAndStateLabel.backgroundColor = DARK_ORANGE;
-        _cityAndStateLabel.adjustsFontSizeToFitWidth = YES;
+        [_cityAndStateLabel setBackgroundColor:DARK_ORANGE];
+        [_cityAndStateLabel setAdjustsFontSizeToFitWidth:YES];
         [self.view addSubview:_cityAndStateLabel];
     
         // increment the y offset by the height of the city and state label
@@ -67,15 +67,15 @@
         // setup sunrise label
         _sunriseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, yOffset, width/2, height/6)];
         [_sunriseLabel setFont:[UIFont fontWithName:@"Avenir" size:25.0]];
-        _sunriseLabel.backgroundColor = LIGHT_ORANGE;
-        _sunriseLabel.adjustsFontSizeToFitWidth = YES;
+        [_sunriseLabel setBackgroundColor:LIGHT_ORANGE];
+        [_sunriseLabel setAdjustsFontSizeToFitWidth:YES];
         [self.view addSubview:_sunriseLabel];
         
         // setup sunset label
         _sunsetLabel = [[UILabel alloc] initWithFrame:CGRectMake(width/2, yOffset, width/2, height/6)];
         [_sunsetLabel setFont:[UIFont fontWithName:@"Avenir" size:25.0]];
-        _sunsetLabel.backgroundColor = LIGHT_ORANGE;
-        _sunsetLabel.adjustsFontSizeToFitWidth = YES;
+        [_sunsetLabel setBackgroundColor:LIGHT_ORANGE];
+        [_sunsetLabel setAdjustsFontSizeToFitWidth:YES];
         [self.view addSubview:_sunsetLabel];
         
         // increment the y offset by the height of the sunrise and sunset labels
@@ -84,9 +84,22 @@
         // setup sunlight label
         _sunlightLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, yOffset, width, (int)(height/8 + height/48))];
         [_sunlightLabel setFont:[UIFont fontWithName:@"Avenir" size:25.0]];
-        _sunlightLabel.backgroundColor = DARK_ORANGE;
-        _sunlightLabel.adjustsFontSizeToFitWidth = YES;
+        [_sunlightLabel setBackgroundColor:DARK_ORANGE];
+        [_sunlightLabel setAdjustsFontSizeToFitWidth:YES];
         [self.view addSubview:_sunlightLabel];
+        
+        // initialize sunset notification variables
+        _sunsetPassed = YES;
+        _sunsetNotification = [UILocalNotification new];
+        NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+        _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
+        _notificationsInterval = [[userSettings objectForKey:@"intervalBefore"] intValue];
+        
+        // observe changes in the user's notification settings
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(updateNotifications)
+                                              name:NSUserDefaultsDidChangeNotification
+                                              object:nil];
         
         // start looking for location changes
         [self startSignificantChangeUpdates];
@@ -100,6 +113,8 @@
     NSDateFormatter *formatter =  [NSDateFormatter new];
     [formatter setDateFormat:@"HH:mm"];
     NSString *timeString = [formatter stringFromDate:[NSDate date]];
+    
+    // get hours and minutes components
     NSString *currentHours = [timeString substringWithRange:NSMakeRange(0,2)];
     NSString *currentMinutes = [timeString substringWithRange:NSMakeRange(3, 2)];
 
@@ -107,101 +122,40 @@
     int minute = [currentMinutes intValue];
     
     // determine whether or not the sunset has passed
-    bool sunsetPassed = NO;
-    if (_sunset.hour - hour > 0) {
-        sunsetPassed = NO;
-    }
-    else if (_sunset.hour - hour == 0 && _sunset.minute - minute > 0) {
-        sunsetPassed = NO;
+    if (_sunset.hour - hour > 0 || (_sunset.hour - hour == 0 && _sunset.minute - minute >= 0)) {
+        _sunsetPassed = NO;
     }
     else {
-        sunsetPassed = YES;
+        _sunsetPassed = YES;
     }
     
-    // if sunset passed, calculate how long ago it was
-    if (sunsetPassed) {
-        int hoursDiff = hour - (int)_sunset.hour;
-        int minutesDiff = minute - (int)_sunset.minute;
+    // determine the correct preposition to use
+    NSString *preposition = (_sunsetPassed) ? @"after" : @"until";
+    
+    // calculate the hours and minutes differences
+    int hoursDiff = (_sunsetPassed) ? (hour - (int)_sunset.hour) : ((int)_sunset.hour - hour);
+    int minutesDiff = (_sunsetPassed) ? (minute - (int)_sunset.minute) : ((int)_sunset.minute - minute);
         
-        // add 60 minutes to minutesDiff if it's negative
-        if (minutesDiff < 0) {
-            hoursDiff -= 1;
-            minutesDiff += 60;
-        }
-        
-        // determine whether or not the hours string should be plural
-        NSMutableString *hoursString = [NSMutableString new];
-        if (hoursDiff == 1) {
-            [hoursString setString:@"hour"];
-        }
-        else {
-            [hoursString setString:@"hours"];
-        }
-        
-        // determine whether or not the minutes string should be plural
-        NSMutableString *minutesString = [NSMutableString new];
-        if (minutesDiff == 1) {
-            [minutesString setString:@"minute"];
-        }
-        else {
-            [minutesString setString:@"minutes"];
-        }
-        
-        // create the hours and minutes strings
-        NSString *hours = [NSString stringWithString:hoursString];
-        NSString *minutes = [NSString stringWithString:minutesString];
-        
-        // if the sunset is now, tell the user to enjoy the sunset
-        if (hoursDiff == 0 && minutesDiff == 0) {
-            [_countdownLabel setText:@"Enjoy the sunset!"];
-        }
-        // otherwise, show the countdown as usual
-        else {
-            [_countdownLabel setText:[NSString stringWithFormat:@"%d %@ and %d %@ after sunset", hoursDiff, hours, minutesDiff, minutes]];
-        }
+    // add 60 minutes to minutesDiff if it's negative
+    if (minutesDiff < 0) {
+        hoursDiff -= 1;
+        minutesDiff += 60;
     }
     
-    // if sunset did not pass, calculate how long until it occurs
+    // determine the correct pluralization of the hours and minutes strings
+    NSString *hoursString = (hoursDiff == 1) ? @"hour" : @"hours";
+    NSString *minutesString = (minutesDiff == 1) ? @"minute" : @"minutes";
+
+    // if the sunset is now, tell the user to enjoy the sunset
+    if (hoursDiff == 0 && minutesDiff == 0) {
+        [_countdownLabel setText:@"Enjoy the sunset!"];
+    }
+    // otherwise, show the countdown as usual
     else {
-        int hoursDiff = (int)_sunset.hour - hour;
-        int minutesDiff = (int)_sunset.minute - minute;
-        
-        // add 60 minutes to minutesDiff if it's negative
-        if (minutesDiff < 0) {
-            hoursDiff -= 1;
-            minutesDiff += 60;
-        }
-        
-        // determine whether or not the hours string should be plural
-        NSMutableString *hoursString = [NSMutableString new];
-        if (hoursDiff == 1) {
-            [hoursString setString:@"hour"];
-        }
-        else {
-            [hoursString setString:@"hours"];
-        }
-        
-        // determine whether or not the minutes string should be plural
-        NSMutableString *minutesString = [NSMutableString new];
-        if (minutesDiff == 1) {
-            [minutesString setString:@"minute"];
-        }
-        else {
-            [minutesString setString:@"minutes"];
-        }
-        
-        // create the hours and minutes strings
-        NSString *hours = [NSString stringWithString:hoursString];
-        NSString *minutes = [NSString stringWithString:minutesString];
-        
-        // if the sunset is now, tell the user to enjoy the sunset
-        if (hoursDiff == 0 && minutesDiff == 0) {
-            [_countdownLabel setText:@"Enjoy the sunset!"];
-        }
-        // otherwise, show the countdown as usual
-        else {
-            [_countdownLabel setText:[NSString stringWithFormat:@"%d %@ and %d %@ until sunset", hoursDiff, hours, minutesDiff, minutes]];
-        }
+        [_countdownLabel setText:[NSString stringWithFormat:@"%d %@ and %d %@ %@ sunset",
+                                                            hoursDiff, hoursString,
+                                                            minutesDiff, minutesString,
+                                                            preposition]];
     }
 }
 
@@ -244,6 +198,7 @@
             _shareView.state = _state;
             
             [self updateLabels];
+            [self updateNotifications];
         }
     }];
     
@@ -265,16 +220,16 @@
 - (void) updateLabels
 {
     // update location labels
-    _cityAndStateLabel.text = [NSString stringWithFormat:@"%@, %@", _city, _state];
+    [_cityAndStateLabel setText:[NSString stringWithFormat:@"%@, %@", _city, _state]];
 
     // update sunrise label
     NSString *upArrow = [NSString stringWithUTF8String:"\u25B2"];
-    _sunriseLabel.text = [NSString stringWithFormat:@"%@ %d:%d AM", upArrow, (int)_sunrise.hour, (int)_sunrise.minute];
+    [_sunriseLabel setText:[NSString stringWithFormat:@"%@ %d:%d AM", upArrow, (int)_sunrise.hour, (int)_sunrise.minute]];
     
     // update sunset label
     NSString *downArrow = [NSString stringWithUTF8String:"\u25BC"];
     int hour = (int)_sunset.hour - 12;
-    _sunsetLabel.text = [NSString stringWithFormat:@"%@ %d:%d PM", downArrow, hour, (int)_sunset.minute];
+    [_sunsetLabel setText:[NSString stringWithFormat:@"%@ %d:%d PM", downArrow, hour, (int)_sunset.minute]];
     
     // calculate the total hours of sunlight and update the sunlight label
     int hoursSunlight = (int)(_sunset.hour - _sunrise.hour);
@@ -286,13 +241,13 @@
         minutesSunlight += 60;
     }
     
-    // determine whether or not the minutes string should be plural and update the sunlight label
-    if (minutesSunlight == 1) {
-        _sunlightLabel.text = [NSString stringWithFormat:@"%d hours and %d minute of sunlight", hoursSunlight, minutesSunlight];
-    }
-    else {
-        _sunlightLabel.text = [NSString stringWithFormat:@"%d hours and %d minutes of sunlight", hoursSunlight, minutesSunlight];
-    }
+    // determine the correct pluralization of the hours and minutes strings
+    NSString *hoursString = (hoursSunlight == 1) ? @"hour" : @"hours";
+    NSString *minutesString = (minutesSunlight == 1) ? @"minute" : @"minutes";
+    
+    // update the sunlight label
+    [_sunlightLabel setText:[NSString stringWithFormat:@"%d %@ and %d %@ of sunlight",
+                                                       hoursSunlight, hoursString, minutesSunlight, minutesString]];
 }
 
 - (void) updateSunlightMap
@@ -313,6 +268,46 @@
 {
     // perform updateSunlightMap in a background thread
     [self performSelectorInBackground:@selector(updateSunlightMap) withObject:nil];
+}
+
+- (void) updateNotifications
+{
+    NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+    _sunsetNotificationsEnabled = [[userSettings objectForKey:@"sunsetNotifications"] boolValue];
+    _notificationsInterval = [[userSettings objectForKey:@"intervalBefore"] intValue];
+    
+    if (_sunsetNotificationsEnabled && !_sunsetPassed) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
+        // create new fire date using today's date
+        NSDateComponents *today = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                    fromDate:[NSDate date]];
+        NSDateComponents *fireDate = [NSDateComponents new];
+        [fireDate setYear:today.year];
+        [fireDate setMonth:today.month];
+        [fireDate setDay:today.day];
+        [fireDate setHour:_sunset.hour];
+        [fireDate setMinute:_sunset.minute - _notificationsInterval];
+        [_sunsetNotification setFireDate:[[NSCalendar currentCalendar] dateFromComponents:fireDate]];
+        
+        // create the notification body and schedule the notification
+        NSString *intervalString;
+        if (_notificationsInterval == 0) {
+            intervalString = @"now";
+        }
+        else if (_notificationsInterval == 1) {
+            intervalString = [NSString stringWithFormat:@"in %d minute", _notificationsInterval];
+        }
+        else {
+            intervalString = [NSString stringWithFormat:@"in %d minutes", _notificationsInterval];
+        }
+        
+        [_sunsetNotification setAlertBody:[NSString stringWithFormat:@"%@, %@ sunset %@!", _city, _state, intervalString]];
+        [[UIApplication sharedApplication] scheduleLocalNotification:_sunsetNotification];
+    }
+    else {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
 }
 
 - (void) viewDidLoad

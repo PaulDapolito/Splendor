@@ -69,6 +69,13 @@
     // setup UILabel text alignment for entire app
     [[UILabel appearance] setTextAlignment:NSTextAlignmentCenter];
     
+    // initialize default settings
+    NSUserDefaults *defaultSettings = [NSUserDefaults standardUserDefaults];
+    NSDictionary *defaultDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"NO", @"sunsetNotifications",
+                                                                                   @"10", @"intervalBefore", nil];
+    [defaultSettings registerDefaults:defaultDictionary];
+    [defaultSettings synchronize];
+    
     // add the tab bar controller as the root view for the app
     [self.window setRootViewController:_tabBarController];
     [self.window makeKeyAndVisible];

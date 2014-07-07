@@ -27,9 +27,9 @@
                                                          self.tableView.contentInset.bottom,
                                                          self.tableView.contentInset.right)];
         // configure the table view visual components
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.extendedLayoutIncludesOpaqueBars = NO;
-        self.automaticallyAdjustsScrollViewInsets = NO;
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+        [self setExtendedLayoutIncludesOpaqueBars:NO];
+        [self setAutomaticallyAdjustsScrollViewInsets:NO];
         
         // set view background color
         [self.view setBackgroundColor:[UIColor colorWithRed:1.0 green:.573 blue:0 alpha:0.5f]];
@@ -87,27 +87,18 @@
     NSString *location = rowEntry.location;
     NSString *date = rowEntry.date;
     
-    // remove excess zeroes from date string
-    if([[date substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]){
-        date = [date substringWithRange:NSMakeRange(1, date.length -1)];
-    }
-    NSRange indexOfslash = [date rangeOfString:@"/"];
-    if([[date substringWithRange:NSMakeRange(indexOfslash.location+1, 1)] isEqualToString:@"0"]) {
-        date = [date stringByReplacingCharactersInRange:NSMakeRange(indexOfslash.location+1, 1) withString:@""];
-    }
-    
     // setup cell text and background color
     [[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@", location, date]];
     [[cell textLabel] setFont:[UIFont fontWithName:@"Avenir" size:20.0]];
-    cell.textLabel.adjustsFontSizeToFitWidth = YES;
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    [cell.textLabel setAdjustsFontSizeToFitWidth:YES];
+    [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
     [cell setBackgroundColor: DARK_ORANGE];
     
     // setup cell's selected view
     UIView *selectedView = [[UIView alloc] init];
-    selectedView.backgroundColor = [UIColor colorWithRed:1 green:.573 blue:0 alpha:1];
-    selectedView.layer.cornerRadius = 10;
-    selectedView.layer.masksToBounds = YES;
+    [selectedView setBackgroundColor:[UIColor colorWithRed:1 green:.573 blue:0 alpha:1]];
+    [selectedView.layer setCornerRadius:10];
+    [selectedView.layer setMasksToBounds:YES];
     [cell setSelectedBackgroundView:selectedView];
 
     return cell;

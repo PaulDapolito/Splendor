@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73B4A3831968DFEC0076282F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 73B4A3821968DFEC0076282F /* Settings.bundle */; };
 		73D1B5E119689875006E4789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E019689875006E4789 /* Foundation.framework */; };
 		73D1B5E319689875006E4789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E219689875006E4789 /* CoreGraphics.framework */; };
 		73D1B5E519689875006E4789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E419689875006E4789 /* UIKit.framework */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73B4A3821968DFEC0076282F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		73D1B5DD19689875006E4789 /* Splendor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splendor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D1B5E019689875006E4789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		73D1B5E219689875006E4789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +131,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73B4A37B1968DBB90076282F /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				73D1B613196898A9006E4789 /* CollectionViewController.h */,
+				73D1B614196898A9006E4789 /* CollectionViewController.m */,
+				73D1B615196898A9006E4789 /* EntryViewController.h */,
+				73D1B616196898A9006E4789 /* EntryViewController.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
 		73D1B5D419689875006E4789 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +189,7 @@
 				73D1B62D19689921006E4789 /* Images */,
 				73D1B5F219689875006E4789 /* Images.xcassets */,
 				73D1B5E719689875006E4789 /* Supporting Files */,
+				73B4A3821968DFEC0076282F /* Settings.bundle */,
 			);
 			path = Splendor;
 			sourceTree = "<group>";
@@ -216,10 +230,7 @@
 				73D1B618196898A9006E4789 /* MainViewController.m */,
 				73D1B619196898A9006E4789 /* ShareViewController.h */,
 				73D1B61A196898A9006E4789 /* ShareViewController.m */,
-				73D1B613196898A9006E4789 /* CollectionViewController.h */,
-				73D1B614196898A9006E4789 /* CollectionViewController.m */,
-				73D1B615196898A9006E4789 /* EntryViewController.h */,
-				73D1B616196898A9006E4789 /* EntryViewController.m */,
+				73B4A37B1968DBB90076282F /* Collection */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -352,6 +363,7 @@
 				73D1B63A19689933006E4789 /* sun.png in Resources */,
 				73D1B63B19689933006E4789 /* sun@2x.png in Resources */,
 				73D1B63619689933006E4789 /* camera.png in Resources */,
+				73B4A3831968DFEC0076282F /* Settings.bundle in Resources */,
 				73D1B63719689933006E4789 /* camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
