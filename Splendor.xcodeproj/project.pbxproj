@@ -14,11 +14,6 @@
 		73D1B5EB19689875006E4789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73D1B5E919689875006E4789 /* InfoPlist.strings */; };
 		73D1B5ED19689875006E4789 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B5EC19689875006E4789 /* main.m */; };
 		73D1B5F319689875006E4789 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73D1B5F219689875006E4789 /* Images.xcassets */; };
-		73D1B5FA19689875006E4789 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5F919689875006E4789 /* XCTest.framework */; };
-		73D1B5FB19689875006E4789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E019689875006E4789 /* Foundation.framework */; };
-		73D1B5FC19689875006E4789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E419689875006E4789 /* UIKit.framework */; };
-		73D1B60419689875006E4789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73D1B60219689875006E4789 /* InfoPlist.strings */; };
-		73D1B60619689875006E4789 /* SplendorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B60519689875006E4789 /* SplendorTests.m */; };
 		73D1B6111968988F006E4789 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B6101968988F006E4789 /* AppDelegate.m */; };
 		73D1B61B196898AA006E4789 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B614196898A9006E4789 /* CollectionViewController.m */; };
 		73D1B61C196898AA006E4789 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B616196898A9006E4789 /* EntryViewController.m */; };
@@ -43,16 +38,6 @@
 		73D1B649196899F0006E4789 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B648196899F0006E4789 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		73D1B5FD19689875006E4789 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 73D1B5D519689875006E4789 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 73D1B5DC19689875006E4789;
-			remoteInfo = Splendor;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		73B4A3821968DFEC0076282F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		73D1B5DD19689875006E4789 /* Splendor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splendor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,41 +49,37 @@
 		73D1B5EC19689875006E4789 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		73D1B5EE19689875006E4789 /* Splendor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Splendor-Prefix.pch"; sourceTree = "<group>"; };
 		73D1B5F219689875006E4789 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		73D1B5F819689875006E4789 /* SplendorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplendorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D1B5F919689875006E4789 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		73D1B60119689875006E4789 /* SplendorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplendorTests-Info.plist"; sourceTree = "<group>"; };
-		73D1B60319689875006E4789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		73D1B60519689875006E4789 /* SplendorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplendorTests.m; sourceTree = "<group>"; };
 		73D1B60F1968988F006E4789 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		73D1B6101968988F006E4789 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		73D1B613196898A9006E4789 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		73D1B614196898A9006E4789 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		73D1B615196898A9006E4789 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryViewController.h; sourceTree = "<group>"; };
-		73D1B616196898A9006E4789 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryViewController.m; sourceTree = "<group>"; };
-		73D1B617196898A9006E4789 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		73D1B618196898A9006E4789 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		73D1B619196898A9006E4789 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		73D1B61A196898A9006E4789 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
-		73D1B621196898CD006E4789 /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSunriseSet.h; sourceTree = "<group>"; };
-		73D1B622196898CD006E4789 /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
-		73D1B625196898DF006E4789 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
-		73D1B626196898DF006E4789 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
-		73D1B628196898F6006E4789 /* SunsetEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SunsetEntry.h; sourceTree = "<group>"; };
-		73D1B629196898F6006E4789 /* SunsetEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SunsetEntry.m; sourceTree = "<group>"; };
-		73D1B62B19689916006E4789 /* entries.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = entries.sql; sourceTree = "<group>"; };
-		73D1B62E19689933006E4789 /* blankMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankMap.png; sourceTree = "<group>"; };
-		73D1B62F19689933006E4789 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
-		73D1B63019689933006E4789 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
-		73D1B63119689933006E4789 /* collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection.png; sourceTree = "<group>"; };
-		73D1B63219689933006E4789 /* collection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collection@2x.png"; sourceTree = "<group>"; };
-		73D1B63319689933006E4789 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
-		73D1B63419689933006E4789 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun@2x.png"; sourceTree = "<group>"; };
+		73D1B613196898A9006E4789 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = "View Controllers/Collection/CollectionViewController.h"; sourceTree = "<group>"; };
+		73D1B614196898A9006E4789 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = "View Controllers/Collection/CollectionViewController.m"; sourceTree = "<group>"; };
+		73D1B615196898A9006E4789 /* EntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EntryViewController.h; path = "View Controllers/Collection/EntryViewController.h"; sourceTree = "<group>"; };
+		73D1B616196898A9006E4789 /* EntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EntryViewController.m; path = "View Controllers/Collection/EntryViewController.m"; sourceTree = "<group>"; };
+		73D1B617196898A9006E4789 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = "View Controllers/MainViewController.h"; sourceTree = "<group>"; };
+		73D1B618196898A9006E4789 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = "View Controllers/MainViewController.m"; sourceTree = "<group>"; };
+		73D1B619196898A9006E4789 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = "View Controllers/ShareViewController.h"; sourceTree = "<group>"; };
+		73D1B61A196898A9006E4789 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = "View Controllers/ShareViewController.m"; sourceTree = "<group>"; };
+		73D1B621196898CD006E4789 /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDSunriseSet.h; path = EDSunriseSet/EDSunriseSet.h; sourceTree = "<group>"; };
+		73D1B622196898CD006E4789 /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDSunriseSet.m; path = EDSunriseSet/EDSunriseSet.m; sourceTree = "<group>"; };
+		73D1B625196898DF006E4789 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = "Data Storage/Database.h"; sourceTree = "<group>"; };
+		73D1B626196898DF006E4789 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = "Data Storage/Database.m"; sourceTree = "<group>"; };
+		73D1B628196898F6006E4789 /* SunsetEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SunsetEntry.h; path = "Data Storage/SunsetEntry.h"; sourceTree = "<group>"; };
+		73D1B629196898F6006E4789 /* SunsetEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SunsetEntry.m; path = "Data Storage/SunsetEntry.m"; sourceTree = "<group>"; };
+		73D1B62B19689916006E4789 /* entries.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = entries.sql; path = "Data Storage/entries.sql"; sourceTree = "<group>"; };
+		73D1B62E19689933006E4789 /* blankMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blankMap.png; path = Images/blankMap.png; sourceTree = "<group>"; };
+		73D1B62F19689933006E4789 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = Images/camera.png; sourceTree = "<group>"; };
+		73D1B63019689933006E4789 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera@2x.png"; path = "Images/camera@2x.png"; sourceTree = "<group>"; };
+		73D1B63119689933006E4789 /* collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = collection.png; path = Images/collection.png; sourceTree = "<group>"; };
+		73D1B63219689933006E4789 /* collection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "collection@2x.png"; path = "Images/collection@2x.png"; sourceTree = "<group>"; };
+		73D1B63319689933006E4789 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun.png; path = Images/sun.png; sourceTree = "<group>"; };
+		73D1B63419689933006E4789 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sun@2x.png"; path = "Images/sun@2x.png"; sourceTree = "<group>"; };
 		73D1B63C19689943006E4789 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		73D1B63E19689947006E4789 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		73D1B6401968994C006E4789 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		73D1B64219689952006E4789 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		73D1B6451968998E006E4789 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
-		73D1B6461968998E006E4789 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
+		73D1B6451968998E006E4789 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Globals.h; path = Globals/Globals.h; sourceTree = "<group>"; };
+		73D1B6461968998E006E4789 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Globals.m; path = Globals/Globals.m; sourceTree = "<group>"; };
 		73D1B648196899F0006E4789 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -115,16 +96,6 @@
 				73D1B5E319689875006E4789 /* CoreGraphics.framework in Frameworks */,
 				73D1B5E519689875006E4789 /* UIKit.framework in Frameworks */,
 				73D1B5E119689875006E4789 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73D1B5F519689875006E4789 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				73D1B5FA19689875006E4789 /* XCTest.framework in Frameworks */,
-				73D1B5FC19689875006E4789 /* UIKit.framework in Frameworks */,
-				73D1B5FB19689875006E4789 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				73D1B5E619689875006E4789 /* Splendor */,
-				73D1B5FF19689875006E4789 /* SplendorTests */,
 				73D1B5DF19689875006E4789 /* Frameworks */,
 				73D1B5DE19689875006E4789 /* Products */,
 			);
@@ -156,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				73D1B5DD19689875006E4789 /* Splendor.app */,
-				73D1B5F819689875006E4789 /* SplendorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,8 +152,8 @@
 				73D1B60F1968988F006E4789 /* AppDelegate.h */,
 				73D1B6101968988F006E4789 /* AppDelegate.m */,
 				73D1B61219689899006E4789 /* View Controllers */,
-				73D1B624196898D6006E4789 /* Database */,
-				73D1B620196898B7006E4789 /* Sunset/Sunrise Calculation Class */,
+				73D1B624196898D6006E4789 /* Data Storage */,
+				73D1B620196898B7006E4789 /* EDSunriseSet */,
 				73D1B64419689963006E4789 /* Globals */,
 				73D1B62D19689921006E4789 /* Images */,
 				73D1B5F219689875006E4789 /* Images.xcassets */,
@@ -205,24 +174,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		73D1B5FF19689875006E4789 /* SplendorTests */ = {
-			isa = PBXGroup;
-			children = (
-				73D1B60519689875006E4789 /* SplendorTests.m */,
-				73D1B60019689875006E4789 /* Supporting Files */,
-			);
-			path = SplendorTests;
-			sourceTree = "<group>";
-		};
-		73D1B60019689875006E4789 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				73D1B60119689875006E4789 /* SplendorTests-Info.plist */,
-				73D1B60219689875006E4789 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		73D1B61219689899006E4789 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,16 +186,16 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		73D1B620196898B7006E4789 /* Sunset/Sunrise Calculation Class */ = {
+		73D1B620196898B7006E4789 /* EDSunriseSet */ = {
 			isa = PBXGroup;
 			children = (
 				73D1B621196898CD006E4789 /* EDSunriseSet.h */,
 				73D1B622196898CD006E4789 /* EDSunriseSet.m */,
 			);
-			name = "Sunset/Sunrise Calculation Class";
+			name = EDSunriseSet;
 			sourceTree = "<group>";
 		};
-		73D1B624196898D6006E4789 /* Database */ = {
+		73D1B624196898D6006E4789 /* Data Storage */ = {
 			isa = PBXGroup;
 			children = (
 				73D1B625196898DF006E4789 /* Database.h */,
@@ -253,7 +204,7 @@
 				73D1B629196898F6006E4789 /* SunsetEntry.m */,
 				73D1B62B19689916006E4789 /* entries.sql */,
 			);
-			name = Database;
+			name = "Data Storage";
 			sourceTree = "<group>";
 		};
 		73D1B62D19689921006E4789 /* Images */ = {
@@ -299,24 +250,6 @@
 			productReference = 73D1B5DD19689875006E4789 /* Splendor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		73D1B5F719689875006E4789 /* SplendorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 73D1B60C19689875006E4789 /* Build configuration list for PBXNativeTarget "SplendorTests" */;
-			buildPhases = (
-				73D1B5F419689875006E4789 /* Sources */,
-				73D1B5F519689875006E4789 /* Frameworks */,
-				73D1B5F619689875006E4789 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				73D1B5FE19689875006E4789 /* PBXTargetDependency */,
-			);
-			name = SplendorTests;
-			productName = SplendorTests;
-			productReference = 73D1B5F819689875006E4789 /* SplendorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -325,11 +258,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Paul Dapolito";
-				TargetAttributes = {
-					73D1B5F719689875006E4789 = {
-						TestTargetID = 73D1B5DC19689875006E4789;
-					};
-				};
 			};
 			buildConfigurationList = 73D1B5D819689875006E4789 /* Build configuration list for PBXProject "Splendor" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -344,7 +272,6 @@
 			projectRoot = "";
 			targets = (
 				73D1B5DC19689875006E4789 /* Splendor */,
-				73D1B5F719689875006E4789 /* SplendorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -368,14 +295,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73D1B5F619689875006E4789 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				73D1B60419689875006E4789 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -396,37 +315,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73D1B5F419689875006E4789 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				73D1B60619689875006E4789 /* SplendorTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		73D1B5FE19689875006E4789 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 73D1B5DC19689875006E4789 /* Splendor */;
-			targetProxy = 73D1B5FD19689875006E4789 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		73D1B5E919689875006E4789 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				73D1B5EA19689875006E4789 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		73D1B60219689875006E4789 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73D1B60319689875006E4789 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -530,46 +425,6 @@
 			};
 			name = Release;
 		};
-		73D1B60D19689875006E4789 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Splendor.app/Splendor";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Splendor/Splendor-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SplendorTests/SplendorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		73D1B60E19689875006E4789 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Splendor.app/Splendor";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Splendor/Splendor-Prefix.pch";
-				INFOPLIST_FILE = "SplendorTests/SplendorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -587,15 +442,6 @@
 			buildConfigurations = (
 				73D1B60A19689875006E4789 /* Debug */,
 				73D1B60B19689875006E4789 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		73D1B60C19689875006E4789 /* Build configuration list for PBXNativeTarget "SplendorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				73D1B60D19689875006E4789 /* Debug */,
-				73D1B60E19689875006E4789 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
