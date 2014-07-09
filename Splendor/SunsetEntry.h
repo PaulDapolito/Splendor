@@ -16,6 +16,5 @@
 @property int rowID;
 
 - (id) initWithDate:(NSString *)date andLocation:(NSString *)location andImage:(UIImage *)image andRowID:(int)rowID;
-- (id) initWithDate:(NSString *)date andLocation:(NSString *)location andImage:(UIImage *)image;
 
 @end

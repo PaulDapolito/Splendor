@@ -22,14 +22,4 @@
     return self;
 }
 
-- (id) initWithDate:(NSString *)date andLocation:(NSString *)location andImage:(UIImage *)image
-{
-    self = [super init];
-    if (self) {
-        self.date = date;
-        self.location = location;
-        self.image = image;
-    }
-    return self;
-}
 @end
