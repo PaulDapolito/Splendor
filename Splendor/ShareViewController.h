@@ -38,9 +38,9 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 
 - (void) showShareButton;
-- (void) showRetakeButton;
-
 - (void) sharePressed;
+
+- (void) showRetakeButton;
 - (void) retakePressed;
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;

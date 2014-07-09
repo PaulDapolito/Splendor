@@ -60,14 +60,12 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return _entries.count;
 }
@@ -104,21 +102,11 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
 // Override to support editing the table view.
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // allow users to delete entries from their collection
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
         [Database deleteEntry:[[self.entries objectAtIndex:([self.entries count] - indexPath.row - 1)] rowID]];
         self.entries = [Database fetchAllEntries];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];

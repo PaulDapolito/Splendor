@@ -18,12 +18,11 @@
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        // get full width and height of screen
-        CGFloat fullWidth = [UIScreen mainScreen].bounds.size.width;
+        // get full height of screen (to display image as fully as possible)
         CGFloat fullHeight = [UIScreen mainScreen].bounds.size.height;
         
         // setup image viewer
-        _imageViewer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, fullWidth, fullHeight - fullHeight/8)];
+        _imageViewer = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, fullHeight - fullHeight/8)];
         [_imageViewer setBackgroundColor:[UIColor colorWithRed:1.0 green:.765 blue:.451 alpha:1.0]];
         [_imageViewer setContentMode:UIViewContentModeScaleAspectFit];
         [_imageViewer setClipsToBounds:YES];
@@ -72,16 +71,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

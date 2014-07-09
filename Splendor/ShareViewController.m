@@ -21,12 +21,11 @@
         // set background color of view
         self.view.backgroundColor = [UIColor colorWithRed:1.0 green:.765 blue:.451 alpha:1.0];
         
-        // setup camera
+        // initialize and setup camera
         _camera = [UIImagePickerController new];
         _camera.delegate = self;
         _showedCamera = NO;
         
-        // instantiate camera
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             [_camera setSourceType:UIImagePickerControllerSourceTypeCamera];
             [_camera setCameraDevice:UIImagePickerControllerCameraDeviceRear];
@@ -53,18 +52,19 @@
     _showedCamera = true;
     [_camera dismissViewControllerAnimated:YES completion:nil];
     
-    // grab the image, save it to the photo reel, and display it in the image viewer
+    // grab the image and display it in the image viewer
     _image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    //UIImageWriteToSavedPhotosAlbum(_image, self, nil, nil);
+    //UIImageWriteToSavedPhotosAlbum(_image, self, nil, nil); // TO DO - Allow user to toggle saving photos to camera roll
     [_imageView setImage:_image];
     
-    // create location and date strings
+    // create location string
     NSString *location = [NSString stringWithFormat:@"%@, %@", _city, _state];
+    
+    // create date string and remove excess zeroes
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/YYYY"];
     NSString *date = [formatter stringFromDate:[NSDate date]];
     
-    // remove excess zeroes from date string
     if([[date substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]){
         date = [date substringWithRange:NSMakeRange(1, date.length -1)];
     }
@@ -78,7 +78,7 @@
     _collectionView.entries = [Database fetchAllEntries];
     [_collectionView.tableView reloadData];
     
-    // show share and retake buttons
+    // show the share and retake buttons
     [self showShareButton];
     [self showRetakeButton];
 }
@@ -100,6 +100,13 @@
     [self.view addSubview:_shareButton];
 }
 
+- (void) sharePressed
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share via" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Email", @"Message", nil];
+    
+    [actionSheet showFromTabBar:_tabBarController.tabBar];
+}
+
 - (void) showRetakeButton
 {
     // setup the retake button
@@ -117,13 +124,6 @@
     [self.view addSubview:_retakeButton];
 }
 
-- (void) sharePressed
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share via" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Email", @"Message", nil];
-    
-    [actionSheet showFromTabBar:_tabBarController.tabBar];
-}
-
 - (void) retakePressed
 {
     // clear out image and image viewer, present camera again
@@ -134,8 +134,8 @@
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // facebook
-    if (buttonIndex == 0) {
+    // indices in this conditional are from [@"Facebook", @"Twitter", @"Email", @"Message", nil]
+    if (buttonIndex == 0) { // facebook
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
             SLComposeViewController *facebookComposer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
             
@@ -145,9 +145,7 @@
             [self presentViewController:facebookComposer animated:YES completion:nil];
         }
     }
-    
-    // twitter
-    else if (buttonIndex == 1) {
+    else if (buttonIndex == 1) { // twitter
         if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
             SLComposeViewController *twitterComposer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
             
@@ -157,9 +155,7 @@
             [self presentViewController:twitterComposer animated:YES completion:nil];
         }
     }
-    
-    // email
-    else if (buttonIndex == 2) {
+    else if (buttonIndex == 2) { // email
         MFMailComposeViewController *emailController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
         
         [emailController setMailComposeDelegate:self];
@@ -173,9 +169,7 @@
         
         [self presentViewController:emailController animated:YES completion:nil];
     }
-    
-    // message
-    else if (buttonIndex == 3) {
+    else if (buttonIndex == 3) { // message
         MFMessageComposeViewController *messageController = [MFMessageComposeViewController new];
         
         [messageController setMessageComposeDelegate:self];
@@ -197,9 +191,7 @@
             return;
         }
     }
-    
-    // cancel
-    else {
+    else { // cancel
         // do nothing
     }
 }
