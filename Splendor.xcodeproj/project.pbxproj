@@ -258,6 +258,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Paul Dapolito";
+				TargetAttributes = {
+					73D1B5DC19689875006E4789 = {
+						DevelopmentTeam = 7Z39AD8EF3;
+					};
+				};
 			};
 			buildConfigurationList = 73D1B5D819689875006E4789 /* Build configuration list for PBXProject "Splendor" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -404,10 +409,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Paul Dapolito (7Z39AD8EF3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Splendor/Splendor-Prefix.pch";
 				INFOPLIST_FILE = "Splendor/Splendor-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2BF02591-CF01-4BE0-8E34-FF923471D370";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,10 +425,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Paul Dapolito (7Z39AD8EF3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Splendor/Splendor-Prefix.pch";
 				INFOPLIST_FILE = "Splendor/Splendor-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2BF02591-CF01-4BE0-8E34-FF923471D370";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
