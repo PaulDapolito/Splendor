@@ -24,7 +24,7 @@ My real motivation in putting this project on GitHub is to learn how I might mak
 My short-term goals for this project are:
 
 1. Implement an in-depth settings bundle, and perhaps implement a settings view within the app.
-  * Allow users to enable/disable notifications for the sunset.
+  * ~~Allow users to enable/disable notifications for the sunset.~~
   * Allow users to enable/disable the use of their camera roll for image storage.
 2. Transfer data storage in Splendor to Core Data.
   * Splendor currently uses SQLite, but in the future, I'd like to implement storage using Core Data. 
