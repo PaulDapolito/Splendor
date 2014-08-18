@@ -89,7 +89,6 @@
 
 @implementation EDSunriseSet
 
-static const int minutesInDay= 60.0*24.0;
 static const int secondsInHour= 60.0*60.0;
 
 #pragma mark - Initialization & dealloc
@@ -102,7 +101,7 @@ static const int secondsInHour= 60.0*60.0;
         self.longitude = longt;
         self.timezone = tz;        
         
-        self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         self.utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
 
     }
@@ -119,7 +118,7 @@ static const int secondsInHour= 60.0*60.0;
 {
     // Get date components 
     [_calendar setTimeZone:_timezone];
-    NSDateComponents *dateComponents = [_calendar components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:date];
+    NSDateComponents *dateComponents = [_calendar components:( NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay ) fromDate:date];
 
     // Calculate sunrise and sunset
     double rise=0.0, set=0.0;
@@ -135,7 +134,7 @@ static const int secondsInHour= 60.0*60.0;
 {
     // Get date components 
     [_calendar setTimeZone:_timezone];
-    NSDateComponents *dateComponents = [_calendar components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:date];
+    NSDateComponents *dateComponents = [_calendar components:( NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay ) fromDate:date];
     double start=0.0, end=0.0;
 
     // Civil twilight
@@ -219,7 +218,7 @@ static const int secondsInHour= 60.0*60.0;
 {
     [_calendar setTimeZone:_timezone];
     // Return only hour, minute, seconds
-    NSDateComponents *dc = [_calendar components:( NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:refDate] ;
+    NSDateComponents *dc = [_calendar components:( NSCalendarUnitHour  | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:refDate] ;
     
     return dc;
 }

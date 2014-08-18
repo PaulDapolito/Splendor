@@ -46,6 +46,22 @@
 				<string>0</string>
 			</array>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Photos</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Save to Camera Roll</string>
+			<key>Key</key>
+			<string>savePhotosToCameraRoll</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>

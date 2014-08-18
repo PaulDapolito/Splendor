@@ -19,7 +19,6 @@
 		73D1B61C196898AA006E4789 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B616196898A9006E4789 /* EntryViewController.m */; };
 		73D1B61D196898AA006E4789 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B618196898A9006E4789 /* MainViewController.m */; };
 		73D1B61E196898AA006E4789 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B61A196898A9006E4789 /* ShareViewController.m */; };
-		73D1B623196898CD006E4789 /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B622196898CD006E4789 /* EDSunriseSet.m */; };
 		73D1B627196898DF006E4789 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B626196898DF006E4789 /* Database.m */; };
 		73D1B62A196898F6006E4789 /* SunsetEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B629196898F6006E4789 /* SunsetEntry.m */; };
 		73D1B62C19689916006E4789 /* entries.sql in Resources */ = {isa = PBXBuildFile; fileRef = 73D1B62B19689916006E4789 /* entries.sql */; };
@@ -36,6 +35,7 @@
 		73D1B64319689952006E4789 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B64219689952006E4789 /* Social.framework */; };
 		73D1B6471968998E006E4789 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B6461968998E006E4789 /* Globals.m */; };
 		73D1B649196899F0006E4789 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B648196899F0006E4789 /* CoreLocation.framework */; };
+		73E7CE5E19A177BA0095C541 /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E7CE5D19A177BA0095C541 /* EDSunriseSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,8 +60,6 @@
 		73D1B618196898A9006E4789 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = "View Controllers/MainViewController.m"; sourceTree = "<group>"; };
 		73D1B619196898A9006E4789 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = "View Controllers/ShareViewController.h"; sourceTree = "<group>"; };
 		73D1B61A196898A9006E4789 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = "View Controllers/ShareViewController.m"; sourceTree = "<group>"; };
-		73D1B621196898CD006E4789 /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDSunriseSet.h; path = EDSunriseSet/EDSunriseSet.h; sourceTree = "<group>"; };
-		73D1B622196898CD006E4789 /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDSunriseSet.m; path = EDSunriseSet/EDSunriseSet.m; sourceTree = "<group>"; };
 		73D1B625196898DF006E4789 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = "Data Storage/Database.h"; sourceTree = "<group>"; };
 		73D1B626196898DF006E4789 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = "Data Storage/Database.m"; sourceTree = "<group>"; };
 		73D1B628196898F6006E4789 /* SunsetEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SunsetEntry.h; path = "Data Storage/SunsetEntry.h"; sourceTree = "<group>"; };
@@ -81,6 +79,8 @@
 		73D1B6451968998E006E4789 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Globals.h; path = Globals/Globals.h; sourceTree = "<group>"; };
 		73D1B6461968998E006E4789 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Globals.m; path = Globals/Globals.m; sourceTree = "<group>"; };
 		73D1B648196899F0006E4789 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		73E7CE5C19A177BA0095C541 /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSunriseSet.h; sourceTree = "<group>"; };
+		73E7CE5D19A177BA0095C541 /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +189,8 @@
 		73D1B620196898B7006E4789 /* EDSunriseSet */ = {
 			isa = PBXGroup;
 			children = (
-				73D1B621196898CD006E4789 /* EDSunriseSet.h */,
-				73D1B622196898CD006E4789 /* EDSunriseSet.m */,
+				73E7CE5C19A177BA0095C541 /* EDSunriseSet.h */,
+				73E7CE5D19A177BA0095C541 /* EDSunriseSet.m */,
 			);
 			name = EDSunriseSet;
 			sourceTree = "<group>";
@@ -310,13 +310,13 @@
 				73D1B6111968988F006E4789 /* AppDelegate.m in Sources */,
 				73D1B61C196898AA006E4789 /* EntryViewController.m in Sources */,
 				73D1B627196898DF006E4789 /* Database.m in Sources */,
+				73E7CE5E19A177BA0095C541 /* EDSunriseSet.m in Sources */,
 				73D1B5ED19689875006E4789 /* main.m in Sources */,
 				73D1B62A196898F6006E4789 /* SunsetEntry.m in Sources */,
 				73D1B61D196898AA006E4789 /* MainViewController.m in Sources */,
 				73D1B61E196898AA006E4789 /* ShareViewController.m in Sources */,
 				73D1B61B196898AA006E4789 /* CollectionViewController.m in Sources */,
 				73D1B6471968998E006E4789 /* Globals.m in Sources */,
-				73D1B623196898CD006E4789 /* EDSunriseSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +414,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Splendor/Splendor-Prefix.pch";
 				INFOPLIST_FILE = "Splendor/Splendor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2BF02591-CF01-4BE0-8E34-FF923471D370";
 				WRAPPER_EXTENSION = app;
@@ -430,6 +431,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Splendor/Splendor-Prefix.pch";
 				INFOPLIST_FILE = "Splendor/Splendor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2BF02591-CF01-4BE0-8E34-FF923471D370";
 				WRAPPER_EXTENSION = app;

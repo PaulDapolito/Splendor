@@ -71,8 +71,11 @@
     
     // initialize default settings
     NSUserDefaults *defaultSettings = [NSUserDefaults standardUserDefaults];
-    NSDictionary *defaultDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"NO", @"sunsetNotifications",
-                                                                                   @"10", @"intervalBefore", nil];
+    NSDictionary *defaultDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                       @"NO", @"sunsetNotifications",
+                                       @"10", @"intervalBefore",
+                                       @"YES", @"savePhotosToCameraRoll",
+                                       nil];
     [defaultSettings registerDefaults:defaultDictionary];
     [defaultSettings synchronize];
     
