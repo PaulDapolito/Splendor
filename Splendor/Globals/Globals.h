@@ -21,6 +21,3 @@ extern CGFloat tabBarHeight;
 // colors
 #define LIGHT_ORANGE [UIColor colorWithRed:1.0 green:.816 blue:.451 alpha:1.0]
 #define DARK_ORANGE [UIColor colorWithRed:1.0 green:.678 blue:.251 alpha:1.0]
-
-// iOS version
-#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)

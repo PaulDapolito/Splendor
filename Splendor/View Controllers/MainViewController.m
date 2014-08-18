@@ -172,7 +172,7 @@
     _locationManager.pausesLocationUpdatesAutomatically = YES;
 
     // request proper permissions (iOS 8 only)
-    if(IS_OS_8_OR_LATER) {
+    if (([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])) {
         [self.locationManager requestAlwaysAuthorization];
     }
     

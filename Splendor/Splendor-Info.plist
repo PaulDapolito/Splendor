@@ -37,6 +37,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Please allow Splendor to access your device&apos;s location.</string>
+	<string>Please allow Splendor to access your device&apos;s location for the purposes of calculating sunrise and sunset times.</string>
 </dict>
 </plist>
