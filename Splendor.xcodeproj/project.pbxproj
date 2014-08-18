@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7393DA0219A17EF800342CFA /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7393DA0119A17EF800342CFA /* EDSunriseSet.m */; };
 		73B4A3831968DFEC0076282F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 73B4A3821968DFEC0076282F /* Settings.bundle */; };
 		73D1B5E119689875006E4789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E019689875006E4789 /* Foundation.framework */; };
 		73D1B5E319689875006E4789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B5E219689875006E4789 /* CoreGraphics.framework */; };
@@ -35,10 +36,11 @@
 		73D1B64319689952006E4789 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B64219689952006E4789 /* Social.framework */; };
 		73D1B6471968998E006E4789 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 73D1B6461968998E006E4789 /* Globals.m */; };
 		73D1B649196899F0006E4789 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D1B648196899F0006E4789 /* CoreLocation.framework */; };
-		73E7CE5E19A177BA0095C541 /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E7CE5D19A177BA0095C541 /* EDSunriseSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7393DA0019A17EF800342CFA /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSunriseSet.h; sourceTree = "<group>"; };
+		7393DA0119A17EF800342CFA /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
 		73B4A3821968DFEC0076282F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		73D1B5DD19689875006E4789 /* Splendor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splendor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D1B5E019689875006E4789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,8 +81,6 @@
 		73D1B6451968998E006E4789 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Globals.h; path = Globals/Globals.h; sourceTree = "<group>"; };
 		73D1B6461968998E006E4789 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Globals.m; path = Globals/Globals.m; sourceTree = "<group>"; };
 		73D1B648196899F0006E4789 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		73E7CE5C19A177BA0095C541 /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSunriseSet.h; sourceTree = "<group>"; };
-		73E7CE5D19A177BA0095C541 /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +189,8 @@
 		73D1B620196898B7006E4789 /* EDSunriseSet */ = {
 			isa = PBXGroup;
 			children = (
-				73E7CE5C19A177BA0095C541 /* EDSunriseSet.h */,
-				73E7CE5D19A177BA0095C541 /* EDSunriseSet.m */,
+				7393DA0019A17EF800342CFA /* EDSunriseSet.h */,
+				7393DA0119A17EF800342CFA /* EDSunriseSet.m */,
 			);
 			name = EDSunriseSet;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 				73D1B6111968988F006E4789 /* AppDelegate.m in Sources */,
 				73D1B61C196898AA006E4789 /* EntryViewController.m in Sources */,
 				73D1B627196898DF006E4789 /* Database.m in Sources */,
-				73E7CE5E19A177BA0095C541 /* EDSunriseSet.m in Sources */,
+				7393DA0219A17EF800342CFA /* EDSunriseSet.m in Sources */,
 				73D1B5ED19689875006E4789 /* main.m in Sources */,
 				73D1B62A196898F6006E4789 /* SunsetEntry.m in Sources */,
 				73D1B61D196898AA006E4789 /* MainViewController.m in Sources */,
