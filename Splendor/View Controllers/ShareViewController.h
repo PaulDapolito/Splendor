@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImageView *imageView;
+@property bool saveToCameraRoll;
 
 @property (strong, nonatomic) id mainView;
 @property (strong, nonatomic) UITabBarController *tabBarController;
@@ -36,6 +37,8 @@
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker;
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
+
+- (void) updatePhotoSettings;
 
 - (void) showShareButton;
 - (void) sharePressed;

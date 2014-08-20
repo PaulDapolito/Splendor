@@ -171,6 +171,13 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.pausesLocationUpdatesAutomatically = YES;
 
+    // request proper permissions (iOS 8 only, uncomment for iOS8 release)
+    /*
+    if (([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])) {
+        [self.locationManager requestAlwaysAuthorization];
+    }*/
+    
+    // begin location updates
     [_locationManager startMonitoringSignificantLocationChanges];
 }
 

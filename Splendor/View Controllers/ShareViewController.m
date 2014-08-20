@@ -32,6 +32,16 @@
             [_camera setShowsCameraControls:YES];
         }
         
+        // initialize photo saving setting variable
+        NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+        _saveToCameraRoll = [[userSettings objectForKey:@"savePhotosToCameraRoll"] boolValue];
+        
+        // observe changes in the user's photo saving setting
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(updatePhotoSettings)
+                                              name:NSUserDefaultsDidChangeNotification
+                                              object:nil];
+        
         // initialize image viewer
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, statusBarHeight, width, height - tabBarHeight)];
         [_imageView setContentMode:UIViewContentModeScaleAspectFit];
@@ -54,8 +64,12 @@
     
     // grab the image and display it in the image viewer
     _image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    //UIImageWriteToSavedPhotosAlbum(_image, self, nil, nil); // TO DO - Allow user to toggle saving photos to camera roll
     [_imageView setImage:_image];
+    
+    // save the image in the camera roll (if user's settings dictate such)
+    if (_saveToCameraRoll) {
+        UIImageWriteToSavedPhotosAlbum(_image, self, nil, nil);
+    }
     
     // create location string
     NSString *location = [NSString stringWithFormat:@"%@, %@", _city, _state];
@@ -81,6 +95,13 @@
     // show the share and retake buttons
     [self showShareButton];
     [self showRetakeButton];
+}
+
+- (void) updatePhotoSettings
+{
+    // grab setting from bundle, set the member variable
+    NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+    _saveToCameraRoll = [[userSettings objectForKey:@"savePhotosToCameraRoll"] boolValue];
 }
 
 - (void) showShareButton
