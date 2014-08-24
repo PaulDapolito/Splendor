@@ -231,12 +231,12 @@
 
     // update sunrise label
     NSString *upArrow = [NSString stringWithUTF8String:"\u25B2"];
-    [_sunriseLabel setText:[NSString stringWithFormat:@"%@ %d:%d AM", upArrow, (int)_sunrise.hour, (int)_sunrise.minute]];
+    [_sunriseLabel setText:[NSString stringWithFormat:@"%@ %d:%02d AM", upArrow, (int)_sunrise.hour, (int)_sunrise.minute]];
     
     // update sunset label
     NSString *downArrow = [NSString stringWithUTF8String:"\u25BC"];
     int hour = (int)_sunset.hour - 12;
-    [_sunsetLabel setText:[NSString stringWithFormat:@"%@ %d:%d PM", downArrow, hour, (int)_sunset.minute]];
+    [_sunsetLabel setText:[NSString stringWithFormat:@"%@ %d:%02d PM", downArrow, hour, (int)_sunset.minute]];
     
     // calculate the total hours of sunlight and update the sunlight label
     int hoursSunlight = (int)(_sunset.hour - _sunrise.hour);
